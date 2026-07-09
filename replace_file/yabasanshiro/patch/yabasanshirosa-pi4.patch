@@ -51,6 +51,19 @@ index a47b6d96..0b07e7a5 100644
  endif()
  
  set(ZLIB_HEADERS
+diff --git a/yabause/src/CMakeLists.txt b/yabause/src/CMakeLists.txt
+index 0b0e6242..2200854f 100644
+--- a/yabause/src/CMakeLists.txt
++++ b/yabause/src/CMakeLists.txt
+@@ -452,7 +452,7 @@ find_library(MINI18N_LIBRARY mini18n)
+ if (NOT MINI18N_INCLUDE_DIR STREQUAL "MINI18N_INCLUDE_DIR-NOTFOUND" AND NOT MINI18N_LIBRARY STREQUAL "MINI18N_LIBRARY-NOTFOUND")
+ 	set(MINI18N_FOUND TRUE)
+ 	include_directories(${MINI18N_INCLUDE_DIR})
+-	add_definitions(-DHAVE_LIBMINI18N=1)
++	# add_definitions(-DHAVE_LIBMINI18N=1)
+ 	set(YABAUSE_LIBRARIES ${YABAUSE_LIBRARIES} ${MINI18N_LIBRARY})
+ endif (NOT MINI18N_INCLUDE_DIR STREQUAL "MINI18N_INCLUDE_DIR-NOTFOUND" AND NOT MINI18N_LIBRARY STREQUAL "MINI18N_LIBRARY-NOTFOUND")
+ 
 diff --git a/yabause/src/nanovg/nanovg_osdcore.c b/yabause/src/nanovg/nanovg_osdcore.c
 index 520c93e9..78e7d0c7 100644
 --- a/yabause/src/nanovg/nanovg_osdcore.c
@@ -359,7 +372,7 @@ index 1108c843..4847e075 100644
    this->filename = home_dir + input_trace_filename + ".config";
  
 diff --git a/yabause/src/retro_arena/main.cpp b/yabause/src/retro_arena/main.cpp
-index a6b0c609..4a832be8 100644
+index a6b0c609..aaa2fa84 100644
 --- a/yabause/src/retro_arena/main.cpp
 +++ b/yabause/src/retro_arena/main.cpp
 @@ -286,14 +286,19 @@ int main(int argc, char** argv)
@@ -376,7 +389,7 @@ index a6b0c609..4a832be8 100644
    }  
 -  std::string bckup_dir = home_dir + "backup.bin";
 +  if (stat(home_dir2.c_str(), &st) == -1) {
-+    home_dir2 = "/roms/saturn/yabasanshiro/";
++    home_dir2 = "/roms/saturn/yabasanshiro-pi4/";
 +  }  
 +  std::string bckup_dir = home_dir2 + "backup.bin";
    strcpy( buppath, bckup_dir.c_str() );
@@ -396,10 +409,10 @@ index a6b0c609..4a832be8 100644
          hideMenuScreen();
        }
 diff --git a/yabause/src/retro_arena/nanogui-sdl/CMakeLists.txt b/yabause/src/retro_arena/nanogui-sdl/CMakeLists.txt
-index 33b8e251..70ad485e 100644
+index 33b8e251..d86c52f4 100644
 --- a/yabause/src/retro_arena/nanogui-sdl/CMakeLists.txt
 +++ b/yabause/src/retro_arena/nanogui-sdl/CMakeLists.txt
-@@ -117,8 +117,14 @@ endif()
+@@ -117,8 +117,19 @@ endif()
  include_directories(ext ext/eigen include ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
  
  # Run simple C converter to put font files into the data segment
@@ -409,14 +422,19 @@ index 33b8e251..70ad485e 100644
 +  # When cross-compiling, use pre-built bin2c for host
 +  set(bin2c_cmdline ${CMAKE_CURRENT_SOURCE_DIR}/bin2c)
 +else()
++  if(CMAKE_CROSSCOMPILING)
++  set(bin2c_cmdline ${CMAKE_CURRENT_SOURCE_DIR}/bin2c)
++else()
 +  add_executable(bin2c resources/bin2c.c)
++  set(bin2c_cmdline ./bin2c)
++endif()
 +  set(bin2c_cmdline ./bin2c)
 +endif()
 +set(bin2c_cmdline ${bin2c_cmdline} nanogui_resources.cpp nanogui_resources.h)
  file(GLOB resources "${CMAKE_CURRENT_SOURCE_DIR}/resources/*.ttf")
  foreach(file ${resources})
    list(APPEND bin2c_cmdline ${file})
-@@ -127,8 +133,8 @@ endforeach()
+@@ -127,8 +138,8 @@ endforeach()
  # Run bin2c on resource files
  add_custom_command(
    OUTPUT nanogui_resources.cpp nanogui_resources.h

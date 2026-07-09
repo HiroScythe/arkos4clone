@@ -1582,6 +1582,10 @@
 		      </emulator>
 			<emulator name="standalone-pi4-bios">
 		      </emulator>
+			<emulator name="standalone-2412-nobios">
+		      </emulator>
+			<emulator name="standalone-2412-bios">
+		      </emulator>
 			<emulator name="retroarch32">
 				<cores>
 					<core>yabasanshiro</core>
@@ -4255,6 +4259,10 @@
 			<emulator name="standalone-pi4-nobios">
 		      </emulator>
 			<emulator name="standalone-pi4-bios">
+		      </emulator>
+			<emulator name="standalone-2412-nobios">
+		      </emulator>
+			<emulator name="standalone-2412-bios">
 		      </emulator>
 			<emulator name="retroarch32">
 				<cores>

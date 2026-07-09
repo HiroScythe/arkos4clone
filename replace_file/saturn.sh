@@ -25,13 +25,21 @@ fi
 
 if [[ $1 == *"standalone"* ]]; then
   directory=$(dirname "$2" | cut -d "/" -f2)
-  if [[ ! -d "/$directory/saturn/yabasanshiro" ]]; then
-    mkdir /$directory/saturn/yabasanshiro
-  fi
   if [[ $1 == *"pi4"* ]]; then
     YABA_BIN="./yabasanshiro-pi4"
+    if [[ ! -d "/$directory/saturn/yabasanshiro" ]]; then
+      mkdir /$directory/saturn/yabasanshiro
+    fi
+  elif [[ $1 == *"2412"* ]]; then
+    YABA_BIN="./yabasanshiro-2412"
+    if [[ ! -d "/$directory/saturn/yabasanshiro-2412" ]]; then
+      mkdir /$directory/saturn/yabasanshiro-2412
+    fi
   else
     YABA_BIN="./yabasanshiro"
+    if [[ ! -d "/$directory/saturn/yabasanshiro" ]]; then
+      mkdir /$directory/saturn/yabasanshiro
+    fi
   fi
   cd /opt/yabasanshiro
   if [[ ! -f "input.cfg" ]]; then
