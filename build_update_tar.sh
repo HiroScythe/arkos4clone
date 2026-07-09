@@ -188,12 +188,18 @@ if [[ "$ARKOS_IMAGE_NAME" == *dArkOS* ]]; then
 
   echo "== 更新 flycastsa v2.6 =="
   mkdir -p "$PAYLOAD_ROOT/opt/flycastsa"
+  rm -rf "$PAYLOAD_ROOT/opt/flycastsa/patch" 2>/dev/null || true
   cp -a ./replace_file/flycastsa/flycast "$PAYLOAD_ROOT/opt/flycastsa/" 2>/dev/null || true
 
   echo "== 添加 flycastsa-2022 =="
   mkdir -p "$PAYLOAD_ROOT/opt/flycastsa-2022"
   cp -a ./replace_file/flycastsa-2022/. "$PAYLOAD_ROOT/opt/flycastsa-2022/" 2>/dev/null || true
   rm -rf "$PAYLOAD_ROOT/opt/flycastsa-2022/patch" 2>/dev/null || true
+
+  echo "== 添加 flycastsa-r7 =="
+  mkdir -p "$PAYLOAD_ROOT/opt/flycastsa-r7"
+  cp -a ./replace_file/flycastsa-r7/. "$PAYLOAD_ROOT/opt/flycastsa-r7/" 2>/dev/null || true
+  rm -rf "$PAYLOAD_ROOT/opt/flycastsa-r7/patch" 2>/dev/null || true
 
   echo "== 注入 retrorun =="
   mkdir -p "$PAYLOAD_ROOT/usr/local/bin"
@@ -284,6 +290,8 @@ EOF
   meta_add "0777" "1000:1000" "/opt/flycastsa/*"
   meta_add "0777" "1000:1000" "/opt/flycastsa-2022"
   meta_add "0777" "1000:1000" "/opt/flycastsa-2022/*"
+  meta_add "0777" "1000:1000" "/opt/flycastsa-r7"
+  meta_add "0777" "1000:1000" "/opt/flycastsa-r7/*"
   meta_add "0777" "1000:1000" "/usr/lib/aarch64-linux-gnu/libjson-c.so*"
   meta_add "0777" "1000:1000" "/usr/local/bin/cpymo"
   meta_add "0777" "1000:1000" "/usr/local/bin/pymo.sh"
@@ -444,11 +452,17 @@ else
   echo "== 更新 flycastsa v2.6 =="
   mkdir -p "$PAYLOAD_ROOT/opt/flycastsa"
   cp -a ./replace_file/flycastsa/flycast "$PAYLOAD_ROOT/opt/flycastsa/" 2>/dev/null || true
+  rm -rf "$PAYLOAD_ROOT/opt/flycastsa/patch" 2>/dev/null || true
 
   echo "== 添加 flycastsa-2022 =="
   mkdir -p "$PAYLOAD_ROOT/opt/flycastsa-2022"
   cp -a ./replace_file/flycastsa-2022/. "$PAYLOAD_ROOT/opt/flycastsa-2022/" 2>/dev/null || true
   rm -rf "$PAYLOAD_ROOT/opt/flycastsa-2022/patch" 2>/dev/null || true
+
+  echo "== 添加 flycastsa-r7 =="
+  mkdir -p "$PAYLOAD_ROOT/opt/flycastsa-r7"
+  cp -a ./replace_file/flycastsa-r7/. "$PAYLOAD_ROOT/opt/flycastsa-r7/" 2>/dev/null || true
+  rm -rf "$PAYLOAD_ROOT/opt/flycastsa-r7/patch" 2>/dev/null || true
 
   echo "== 添加 rufflesa =="
   mkdir -p "$PAYLOAD_ROOT/opt/rufflesa"
@@ -553,6 +567,8 @@ EOF
   meta_add "0777" "1002:1002" "/opt/flycastsa/*"
   meta_add "0777" "1002:1002" "/opt/flycastsa-2022"
   meta_add "0777" "1002:1002" "/opt/flycastsa-2022/*"
+  meta_add "0777" "1002:1002" "/opt/flycastsa-r7"
+  meta_add "0777" "1002:1002" "/opt/flycastsa-r7/*"
   meta_add "0777" "1002:1002" "/usr/lib/aarch64-linux-gnu/libjson-c.so*"
   meta_add "0777" "1002:1002" "/usr/local/bin/cpymo"
   meta_add "0777" "1002:1002" "/usr/local/bin/pymo.sh"

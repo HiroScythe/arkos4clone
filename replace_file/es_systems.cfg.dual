@@ -438,6 +438,8 @@
 		<extension>.7z .7Z .ist .IST .zip .ZIP .bin .BIN</extension>
 		<command>sudo perfmax %GOVERNOR% %ROM%; nice -n -19 /usr/local/bin/atomiswave.sh %EMULATOR% %CORE% %ROM%; sudo perfnorm</command>
 		<emulators>
+			<emulator name="standalone-r7">
+			  </emulator>
 			<emulator name="retroarch">
 				<cores>
 					<core>flycast</core>
@@ -480,6 +482,8 @@
 		<extension>.7z .7Z .ist .IST .zip .ZIP .bin .BIN .dat .DAT</extension>
 		<command>sudo perfmax %GOVERNOR% %ROM%; nice -n -19 /usr/local/bin/naomi.sh %EMULATOR% %CORE% %ROM%; sudo perfnorm</command>
 		<emulators>
+			<emulator name="standalone-r7">
+			  </emulator>
 			<emulator name="retroarch">
 				<cores>
 					<core>flycast</core>
@@ -1610,6 +1614,8 @@
 		<extension>.7z .7Z .gdi .GDI .cdi .CDI .cue .CUE .chd .CHD .m3u .M3U</extension>
 		<command>sudo perfmax %GOVERNOR% %ROM%; nice -n -19 /usr/local/bin/dreamcast.sh %EMULATOR% %CORE% %ROM%; sudo perfnorm</command>
 		<emulators>
+			<emulator name="standalone-r7">
+			  </emulator>
 			<emulator name="retroarch32">
 				<cores>
 					<core>flycast32_rumble</core>
@@ -3102,6 +3108,8 @@
 		<extension>.7z .7Z .ist .IST .zip .ZIP .bin .BIN</extension>
 		<command>sudo perfmax %GOVERNOR% %ROM%; nice -n -19 /usr/local/bin/atomiswave.sh %EMULATOR% %CORE% %ROM%; sudo perfnorm</command>
 		<emulators>
+			<emulator name="standalone-r7">
+			  </emulator>
 			<emulator name="retroarch">
 				<cores>
 					<core>flycast</core>
@@ -3144,6 +3152,8 @@
 		<extension>.7z .7Z .ist .IST .zip .ZIP .bin .BIN .dat .DAT</extension>
 		<command>sudo perfmax %GOVERNOR% %ROM%; nice -n -19 /usr/local/bin/naomi.sh %EMULATOR% %CORE% %ROM%; sudo perfnorm</command>
 		<emulators>
+			<emulator name="standalone-r7">
+			  </emulator>
 			<emulator name="retroarch">
 				<cores>
 					<core>flycast</core>
@@ -4274,6 +4284,8 @@
 		<extension>.7z .7Z .gdi .GDI .cdi .CDI .cue .CUE .chd .CHD .m3u .M3U</extension>
 		<command>sudo perfmax %GOVERNOR% %ROM%; nice -n -19 /usr/local/bin/dreamcast.sh %EMULATOR% %CORE% %ROM%; sudo perfnorm</command>
 		<emulators>
+			<emulator name="standalone-r7">
+			  </emulator>
 			<emulator name="retroarch32">
 				<cores>
 					<core>flycast32_rumble</core>

@@ -224,6 +224,13 @@ if [[ "$ARKOS_IMAGE_NAME" == *dArkOS* ]]; then
   safe sudo chown -R $CHOWN_USER "$MOUNT_DIR/root/opt/flycastsa-2022" 2>/dev/null
   safe sudo chmod -R 777 "$MOUNT_DIR/root/opt/flycastsa-2022" 2>/dev/null
 
+  echo "== 添加 flycastsa-r7  =="
+  safe sudo mkdir -p "$MOUNT_DIR/root/opt/flycastsa-r7" 2>/dev/null
+  safe sudo cp -a ./replace_file/flycastsa-r7/. "$MOUNT_DIR/root/opt/flycastsa-r7/" 2>/dev/null
+  safe sudo rm -rf "$MOUNT_DIR/root/opt/flycastsa-r7/patch" 2>/dev/null
+  safe sudo chown -R $CHOWN_USER "$MOUNT_DIR/root/opt/flycastsa-r7" 2>/dev/null
+  safe sudo chmod -R 777 "$MOUNT_DIR/root/opt/flycastsa-r7" 2>/dev/null
+
   echo "== 处理 roms.tar =="
   if [ "$(stat -c%s $MOUNT_DIR/root/roms.tar 2>/dev/null || echo 0)" -le $((100*1024*1024)) ]; then
     echo "== 复制 roms.tar 出来操作 =="
@@ -580,6 +587,13 @@ else
   safe sudo rm -rf "$MOUNT_DIR/root/opt/flycastsa-2022/patch" 2>/dev/null
   safe sudo chown -R $CHOWN_USER "$MOUNT_DIR/root/opt/flycastsa-2022" 2>/dev/null
   safe sudo chmod -R 777 "$MOUNT_DIR/root/opt/flycastsa-2022" 2>/dev/null
+
+  echo "== 添加 flycastsa-r7  =="
+  safe sudo mkdir -p "$MOUNT_DIR/root/opt/flycastsa-r7" 2>/dev/null
+  safe sudo cp -a ./replace_file/flycastsa-r7/. "$MOUNT_DIR/root/opt/flycastsa-r7/" 2>/dev/null
+  safe sudo rm -rf "$MOUNT_DIR/root/opt/flycastsa-r7/patch" 2>/dev/null
+  safe sudo chown -R $CHOWN_USER "$MOUNT_DIR/root/opt/flycastsa-r7" 2>/dev/null
+  safe sudo chmod -R 777 "$MOUNT_DIR/root/opt/flycastsa-r7" 2>/dev/null
 
   echo "== 添加 gametank-sa  =="
   safe sudo mkdir -p "$MOUNT_DIR/root/opt/gametank" 2>/dev/null
