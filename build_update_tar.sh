@@ -201,6 +201,11 @@ if [[ "$ARKOS_IMAGE_NAME" == *dArkOS* ]]; then
   cp -a ./replace_file/flycastsa-r7/. "$PAYLOAD_ROOT/opt/flycastsa-r7/" 2>/dev/null || true
   rm -rf "$PAYLOAD_ROOT/opt/flycastsa-r7/patch" 2>/dev/null || true
 
+  echo "== 更新 yabasanshiro-sa =="
+  mkdir -p "$PAYLOAD_ROOT/opt/yabasanshiro"
+  rm -rf "$PAYLOAD_ROOT/opt/yabasanshiro/patch" 2>/dev/null || true
+  cp -a ./replace_file/yabasanshiro/. "$PAYLOAD_ROOT/opt/yabasanshiro/" 2>/dev/null || true
+
   echo "== 注入 retrorun =="
   mkdir -p "$PAYLOAD_ROOT/usr/local/bin"
   cp -r ./replace_file/retrorun/retrorun32 "$PAYLOAD_ROOT/usr/local/bin/" 2>/dev/null || true
@@ -292,6 +297,8 @@ EOF
   meta_add "0777" "1000:1000" "/opt/flycastsa-2022/*"
   meta_add "0777" "1000:1000" "/opt/flycastsa-r7"
   meta_add "0777" "1000:1000" "/opt/flycastsa-r7/*"
+  meta_add "0777" "1000:1000" "/opt/yabasanshiro"
+  meta_add "0777" "1000:1000" "/opt/yabasanshiro/*"
   meta_add "0777" "1000:1000" "/usr/lib/aarch64-linux-gnu/libjson-c.so*"
   meta_add "0777" "1000:1000" "/usr/local/bin/cpymo"
   meta_add "0777" "1000:1000" "/usr/local/bin/pymo.sh"
@@ -487,6 +494,11 @@ else
   mkdir -p "$PAYLOAD_ROOT/home/ark/.quirks"
   cp -r ./replace_file/ogage "$PAYLOAD_ROOT/home/ark/.quirks/" 2>/dev/null || true
 
+  echo "== 更新 yabasanshiro-sa =="
+  mkdir -p "$PAYLOAD_ROOT/opt/yabasanshiro"
+  rm -rf "$PAYLOAD_ROOT/opt/yabasanshiro/patch" 2>/dev/null || true
+  cp -a ./replace_file/yabasanshiro/. "$PAYLOAD_ROOT/opt/yabasanshiro/" 2>/dev/null || true
+
   echo "== 注入 services / tools =="
   mkdir -p "$PAYLOAD_ROOT/etc/systemd/system" \
            "$PAYLOAD_ROOT/opt/system/Advanced" \
@@ -569,6 +581,8 @@ EOF
   meta_add "0777" "1002:1002" "/opt/flycastsa-2022/*"
   meta_add "0777" "1002:1002" "/opt/flycastsa-r7"
   meta_add "0777" "1002:1002" "/opt/flycastsa-r7/*"
+  meta_add "0777" "1002:1002" "/opt/yabasanshiro"
+  meta_add "0777" "1002:1002" "/opt/yabasanshiro/*"
   meta_add "0777" "1002:1002" "/usr/lib/aarch64-linux-gnu/libjson-c.so*"
   meta_add "0777" "1002:1002" "/usr/local/bin/cpymo"
   meta_add "0777" "1002:1002" "/usr/local/bin/pymo.sh"
