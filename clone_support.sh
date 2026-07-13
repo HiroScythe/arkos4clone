@@ -510,6 +510,7 @@ else
   safe sudo cp -f ./mod_so/64/* "$MOUNT_DIR/root/home/ark/.config/retroarch/cores/"
   safe sudo cp -f ./mod_so/arkos_64/* "$MOUNT_DIR/root/home/ark/.config/retroarch/cores/"
   safe sudo cp -f ./mod_so/32/* "$MOUNT_DIR/root/home/ark/.config/retroarch32/cores/"
+  safe sudo cp -f ./mod_so/arkos_32/* "$MOUNT_DIR/root/home/ark/.config/retroarch32/cores/"
   safe sudo chown -R $CHOWN_USER $MOUNT_DIR/root/home/ark/.config/retroarch/cores/*
   safe sudo chown -R $CHOWN_USER $MOUNT_DIR/root/home/ark/.config/retroarch32/cores/*
   safe sudo chmod -R 777 $MOUNT_DIR/root/home/ark/.config/retroarch/cores/*
